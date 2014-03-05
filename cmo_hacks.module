@@ -1,0 +1,81 @@
+<?php
+// $Id$
+
+/*
+ * @file
+ * Hacks for CMO website
+ *
+ * This is a custom module for customize certain parts
+ * of the website.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function cmo_acks_help($path, $arg) {
+  if ($path == 'admin/help#cmo_hacks') {
+    return t('CMO hacks module.');
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function cmo_hacks_form_contact_site_form_alter(&$form, &$form_state) {
+  // Add a required textfield to collect
+  // users phone number to the form array.
+  $form['intro'] = array(
+    '#title' => t('Contact us through this form.'),
+    '#type' => 'item',
+  );
+  $form['phone'] = array(
+    '#title'    => t('Phone'),
+    '#type'     => 'textfield',
+    '#required' => FALSE,
+  );
+  $form['condiciones'] = array(
+    '#title' => t('Agree'),
+    '#type' => 'checkbox',
+    '#required' => TRUE,
+  );
+  $form['cond_text'] = array(
+    '#title' => t('Note: You must agree the company policy. Once marked you can submit the form.'),
+    '#type' => 'item',
+  );
+ 
+  // Re-sort the form so that we can ensure our phone number field appears
+  // in the right spot. We're going to do this by building an array of the
+  // form field keys, then looping through each and setting their weight.
+  //
+  // Default fields on the contact form are:
+  // name    (Users Name)
+  // mail    (Users Email Address)
+  // subject (Email Subject)
+  // cid     (Category select list,
+  //            only visible if multiple contact categories are defined)
+  // message (Message textarea)
+  // copy    ('Send me a copy' checkbox)
+  // submit  (Submit button)
+ 
+  $order = array(
+    'intro',
+    'name',
+    'mail',
+    'phone',
+    'subject',
+    'cid',
+    'message',
+    'copy',
+    'condiciones',
+    'cond_text',
+    'submit'
+  );
+ 
+  foreach ($order as $key => $field) {
+    // Set/Reset the field's
+    // weight to the array key value
+    // from our order array.
+    $form[$field]['#weight'] = $key;
+  }
+}
+

@@ -1,0 +1,9 @@
+;$Id$
+
+name = CMO Hacks
+description = Hacks for CMO website
+core = 7.x
+package = CMO
+
+files[] = cmo_hacks.module
+
