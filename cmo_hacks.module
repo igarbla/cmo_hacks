@@ -25,7 +25,7 @@ function cmo_hacks_form_contact_site_form_alter(&$form, &$form_state) {
   // Add a required textfield to collect
   // users phone number to the form array.
   $form['intro'] = array(
-    '#title' => t('Contact us through this form.'),
+    '#title' => t('To contact CMO or leave a message, fill out the form.'),
     '#type' => 'item',
   );
   $form['phone'] = array(
