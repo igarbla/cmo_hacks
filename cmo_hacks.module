@@ -34,12 +34,12 @@ function cmo_hacks_form_contact_site_form_alter(&$form, &$form_state) {
     '#required' => FALSE,
   );
   $form['condiciones'] = array(
-    '#title' => t('Agree'),
+    '#title' => t('I Agree'),
     '#type' => 'checkbox',
     '#required' => TRUE,
   );
   $form['cond_text'] = array(
-    '#title' => t('Note: You must agree the company policy. Once marked you can submit the form.'),
+    '#title' => t('NOTE: To continue the process of submission, the user must check a box indicating that you have read and accepted the conditions of the data protection authority. After checking this, you can proceed to send the data to the entity.'),
     '#type' => 'item',
   );
  
