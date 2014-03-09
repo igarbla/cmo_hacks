@@ -34,7 +34,7 @@ function cmo_hacks_form_contact_site_form_alter(&$form, &$form_state) {
     '#required' => FALSE,
   );
   $form['condiciones'] = array(
-    '#title' => t('I Agree'),
+    '#title' => t('I agree'),
     '#type' => 'checkbox',
     '#required' => TRUE,
   );
